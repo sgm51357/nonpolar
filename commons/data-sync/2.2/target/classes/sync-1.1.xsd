@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element name="dataConvert">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" name="data">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="1" minOccurs="1" name="fields">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="0" name="field">
+											<xsd:complexType mixed="true">
+												<xsd:attribute name="target" type="xsd:string" />
+												<xsd:attribute name="unique" type="xsd:boolean" />
+												<xsd:attribute name="default" type="xsd:string" />
+												<xsd:attribute name="mapping" type="xsd:string" />
+												<xsd:attribute name="convert" type="xsd:string" />
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="0" name="params">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="1" name="param">
+											<xsd:complexType mixed="true">
+												<xsd:attribute name="target" type="xsd:string" />
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="0" name="defaultValues">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="1" name="defaultValue">
+											<xsd:complexType mixed="true">
+												<xsd:attribute name="target" type="xsd:string" />
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="0" name="updateExcludes">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="1" name="updateExclude">
+											<xsd:complexType mixed="true">
+												<xsd:attribute name="target" type="xsd:string" />
+												<xsd:attribute name="model">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:string">
+															<xsd:enumeration value="update" />
+															<xsd:enumeration value="force" />
+															<xsd:enumeration value="conflict" />
+															<xsd:enumeration value="zero" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:attribute>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element maxOccurs="1" minOccurs="0" name="valueExcludes">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element maxOccurs="unbounded" minOccurs="1" name="valueExclude">
+											<xsd:complexType mixed="true">
+												<xsd:attribute name="target" type="xsd:string" />
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="typeCode" type="xsd:string" />
+						<xsd:attribute name="class" type="xsd:string" />
+						<xsd:attribute name="fullName" type="xsd:string" />
+						<xsd:attribute name="increName" type="xsd:string" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element maxOccurs="1" minOccurs="1" name="notifys">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" name="notify">
+								<xsd:complexType mixed="true">
+									<xsd:attribute name="appType" type="xsd:string" />
+									<xsd:attribute name="appCode" type="xsd:string" />
+									<xsd:attribute name="relativePath" type="xsd:string" />
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="fileSuffix" default="csv">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="csv" />
+						<xsd:enumeration value="xml" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="encoding" type="xsd:string" default="UTF-8" />
+			<xsd:attribute name="updateRecoder" type="xsd:string" default="updateRecoder" />
+			<xsd:attribute name="relativePath" type="xsd:string" />
+			<xsd:attribute name="cleanHistory" type="xsd:int" />
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
